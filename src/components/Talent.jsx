@@ -16,8 +16,11 @@ const Talent = () => {
   const onSubmit = async (data) => {
     console.log("Submitted!");
     console.log(data);
-    const response  = await axios.post("https://api.sheetbest.com/sheets/d5557934-e203-4d86-856b-7ff77b451277", data)
-    console.log(response.data)
+    const response = await axios.post(
+      "https://api.sheetbest.com/sheets/d5557934-e203-4d86-856b-7ff77b451277",
+      data
+    );
+    console.log(response.data);
     // console.log("Submitted data:", data);
     setShowForm(false);
     reset();
@@ -89,14 +92,16 @@ const Talent = () => {
           exit={{ opacity: 0, y: 20 }}
           onSubmit={handleSubmit(onSubmit)}
           autoComplete="off"
+          className="w-full max-w-lg flex flex-col gap-4 px-4 sm:px-6"
         >
-          <p className="text-[0.85rem] md:text-xl">
+          <p className="text-sm sm:text-base md:text-xl mb-2">
             Join our waiting list and be the first to know when top recruiters
             are ready to connect with you.
           </p>
+
           <div>
             <input
-              className="border-2 border-[#354E6F] rounded-3xl px-4 py-2 outline-none  placeholder:text-white w-full"
+              className="border-2 border-[#354E6F] rounded-3xl px-4 py-2 outline-none placeholder:text-white w-full"
               type="text"
               placeholder="Enter your name"
               {...register("name", { required: "Name is required" })}
@@ -105,6 +110,7 @@ const Talent = () => {
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
+
           <div>
             <input
               className="border-2 border-[#354E6F] rounded-3xl px-4 py-2 outline-none placeholder:text-white w-full"
@@ -113,7 +119,7 @@ const Talent = () => {
               {...register("email", {
                 required: "Email is required",
                 pattern: {
-                  value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                   message: "Invalid email address",
                 },
               })}
@@ -125,27 +131,17 @@ const Talent = () => {
             )}
           </div>
 
-          <label
-            className="flex flex-col items-start justify-center"
-            htmlFor="field"
-          >
+          <label className="flex flex-col items-start justify-center">
             <select
               className="border-2 border-[#354E6F] rounded-3xl px-4 py-2 outline-none  placeholder:text-white w-full"
-              name=""
               {...register("field", {
                 required: "Please select a field of study",
               })}
               id="field"
             >
-              <option className="bg-[#354E6F]" value="">
-                Select field of study
-              </option>
+              <option className="bg-[#354E6F]" value="">Select field of study</option>
               {fieldsOfStudy.map((field, index) => (
-                <option
-                  className="text-white bg-[#354E6F]"
-                  key={index}
-                  value={field}
-                >
+                <option className="bg-[#354E6F]"  key={index} value={field}>
                   {field}
                 </option>
               ))}
@@ -156,12 +152,13 @@ const Talent = () => {
               </p>
             )}
           </label>
+
           <div>
             <motion.button
-              className="border-2 border-[#2B3B4F] bg-[#2B3B4F] rounded-3xl px-20 py-[0.65rem] font-bold hover:cursor-pointer"
+              className="border-2 border-[#2B3B4F] bg-[#2B3B4F] text-white rounded-3xl px-10 py-2 font-bold hover:cursor-pointer w-full sm:w-40"
               type="submit"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               disabled={isSubmitting}
             >
               Join
