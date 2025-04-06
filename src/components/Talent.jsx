@@ -5,6 +5,15 @@ import axios from "axios";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 
+/*************  ✨ Windsurf Command ⭐  *************/
+/**
+ * Talent component renders a form where users can join a waiting list to connect with top recruiters.
+ * It utilizes react-hook-form for form handling and motion for animations.
+ * Users can enter their name, email, and select a field of study from a predefined list.
+ * On successful submission, the form data is sent to an external API and a success message is displayed.
+ */
+
+/*******  75da4949-b3eb-4770-a59e-7376f7e764a1  *******/
 const Talent = () => {
   const {
     register,
